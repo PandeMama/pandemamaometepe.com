@@ -172,6 +172,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 .ord-cart h3{font:400 34px/1 Anton,sans-serif;text-transform:uppercase;margin-bottom:12px}
 .ord-lines{list-style:none;border-top:2px dotted var(--ink);margin-bottom:14px}
 .ord-lines:empty{display:none}
+.ord-boxl{color:var(--muted)}
 .ord-lines li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:2px dotted var(--ink);font-size:15px;line-height:1.3}
 .ord-lines li span small{display:block;color:var(--muted);font-size:13px}
 .ord-q{display:flex;align-items:center;gap:4px}
@@ -337,7 +338,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
       <label class="ord-check"><input type="checkbox" id="ord-hike"> <span data-es="Empacado para caminata">Packed for a hike</span></label>
       <a class="btn ord-send" id="ord-send" href="https://wa.me/50586132300" target="_blank" rel="noopener"><span data-es="Enviar pedido por WhatsApp">Send order on WhatsApp</span></a>
       <p class="ord-msg" id="ord-msg" role="status"></p>
-      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Para recoger temprano, pedí antes de las 8pm de la noche anterior. Abrimos todos los días de 7am a 8pm.">We'll confirm on WhatsApp. For early pickup, order by 8pm the night before. Open every day 7am–8pm.</p>
+      <p class="ord-fine" data-es="El total incluye la caja para llevar (C$25 por cada comida). Te confirmamos por WhatsApp. Para recoger temprano, pedí antes de las 8pm de la noche anterior. Abrimos todos los días de 7am a 8pm.">Total includes the to-go box (C$25 per food item). We'll confirm on WhatsApp. For early pickup, order by 8pm the night before. Open every day 7am–8pm.</p>
     </aside>
   </div>
 </div></section>
@@ -453,7 +454,7 @@ var CCP=[{en:'Plain cream cheese',es:'Queso crema natural',d:0},{en:'Pesto cream
 var OPT={bagel:{en:'Bagel',es:'Bagel',v:BAGEL},cc:{en:'Cream cheese',es:'Queso crema',v:CC},ccp:{en:'Cream cheese',es:'Queso crema',v:CCP}};
 function W(en,es,p){return{en:en,es:es,p:p}}
 var MENU=[
-{en:'Breakfast to go',es:'Desayuno para llevar',items:[
+{en:'Breakfast to go',es:'Desayuno para llevar',box:1,items:[
 {en:'Volcano Bagel',es:'Bagel Volcán',den:'House-smoked ham, scrambled eggs, our mozzarella and flavored cream cheese',des:'Jamón ahumado de la casa, huevos revueltos, nuestra mozzarella y queso crema de sabor',p:390,o:['bagel','cc']},
 {en:'Breakfast Bagel',es:'Bagel desayuno',t:'V',den:'Scrambled eggs and melted mozzarella',des:'Huevos revueltos y mozzarella derretida',p:260,o:['bagel']},
 {en:'Pesto Bagel',es:'Bagel de pesto',t:'V',den:'Scrambled eggs, tomato and pesto cream cheese on sesame',des:'Huevos revueltos, tomate y queso crema pesto en bagel de ajonjolí',p:270},
@@ -462,7 +463,7 @@ var MENU=[
 {en:'Bagel & cream cheese',es:'Bagel con queso crema',t:'V',den:'Plain C$170, flavored C$200',des:'Natural C$170, de sabor C$200',p:170,o:['bagel','ccp']},
 {en:'Fruit, yogurt & granola',es:'Fruta, yogurt y granola',t:'V, GF',den:'Tropical fruit, our yogurt and ginger granola',des:'Fruta tropical, nuestro yogurt y granola de jengibre',p:200}
 ]},
-{en:'Sandwiches',es:'Sándwiches',items:[
+{en:'Sandwiches',es:'Sándwiches',box:1,items:[
 {en:'La Isla Panini',es:'Panini La Isla',den:'House-cured Ometepe ham, mozzarella, Dijon, greens and pineapple on sourdough',des:'Jamón de Ometepe curado en casa, mozzarella, dijon, hojas verdes y piña en masa madre',v:[W('Whole','Entero',410),W('Half','Medio',330)]},
 {en:'Ham & Cheese Panini',es:'Panini de jamón y queso',den:'Our smoked ham and mozzarella on sourdough',des:'Nuestro jamón ahumado y mozzarella en masa madre',v:[W('Whole','Entero',360),W('Half','Medio',290)]},
 {en:'Chicken Pesto Panini',es:'Panini de pollo al pesto',den:'Ometepe chicken, pesto, mozzarella and tomato on sourdough',des:'Pollo de Ometepe, pesto, mozzarella y tomate en masa madre',v:[W('Whole','Entero',380),W('Half','Medio',300)]},
@@ -478,7 +479,7 @@ var MENU=[
 {en:'PB&J',es:'Mantequilla de maní y jalea',t:'V',den:'Our peanut butter and tropical jam',des:'Nuestra mantequilla de maní y jalea tropical',v:[W('Buttermilk & honey bread','Pan de suero y miel',180),W('Half, buttermilk & honey','Medio, pan de suero y miel',150),W('Sourdough (vegan)','Masa madre (vegano)',200),W('Half, sourdough (vegan)','Medio, masa madre (vegano)',160)]},
 {en:'Quesadilla',es:'Quesadilla',den:'Our mozzarella on a homemade flour tortilla, achiote sour cream, pico de gallo',des:'Nuestra mozzarella en tortilla de harina casera, crema de achiote, pico de gallo',v:[W('Cheese','Queso',220),W('Cheese & roasted veggies','Queso y vegetales asados',280),W('Cheese, veggies & chicken','Queso, vegetales y pollo',360),W('Cheese & our ham','Queso y nuestro jamón',360),W('Cheese, ham & veggies','Queso, jamón y vegetales',420)]}
 ]},
-{en:'Salads',es:'Ensaladas',items:[
+{en:'Salads',es:'Ensaladas',box:1,items:[
 {en:'Ometepe Farm Salad',es:'Ensalada de la granja',den:'Island greens, egg, local cheese, our ham and slow-roasted chicken',des:'Hojas verdes de la isla, huevo, queso local, nuestro jamón y pollo asado',p:380},
 {en:'Garden Salad',es:'Ensalada de la huerta',t:'VG',den:'Island greens, tomato, cucumber, red onion, sourdough croutons',des:'Hojas verdes de la isla, tomate, pepino, cebolla morada, crutones de masa madre',p:290}
 ]},
@@ -496,7 +497,7 @@ var MENU=[
 {en:'Iced cacao',es:'Cacao helado',den:'Our own cacao',des:'Nuestro propio cacao',p:120}
 ]}
 ];
-var cart=[], lang='en';
+var BOX=25, cart=[], lang='en';
 function L(o,k){k=k||'';return lang==='es'?(o[k+'es']||o[k+'en']):o[k+'en']}
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -520,7 +521,7 @@ function lineFor(row){
   row.querySelectorAll('select').forEach(function(s){sel[s.dataset.k]=+s.value});
   if(it.v){vi=sel.v;p=it.v[vi].p}
   if('ccp' in sel)p+=CCP[sel.ccp].d;
-  return {g:+row.dataset.g,i:+row.dataset.i,vi:vi,bagel:('bagel' in sel)?sel.bagel:null,cc:('cc' in sel)?sel.cc:null,ccp:('ccp' in sel)?sel.ccp:null,p:p,q:1};
+  return {box:!!MENU[+row.dataset.g].box,g:+row.dataset.g,i:+row.dataset.i,vi:vi,bagel:('bagel' in sel)?sel.bagel:null,cc:('cc' in sel)?sel.cc:null,ccp:('ccp' in sel)?sel.ccp:null,p:p,q:1};
 }
 function sameLine(a,b){return a.g===b.g&&a.i===b.i&&a.vi===b.vi&&a.bagel===b.bagel&&a.cc===b.cc&&a.ccp===b.ccp}
 function describe(l,lg){
@@ -532,10 +533,12 @@ function describe(l,lg){
   if(l.ccp!==null)bits.push(L(CCP[l.ccp]).toLowerCase());
   lang=save; return {name:name,extra:bits.join(', ')};
 }
-function total(){return cart.reduce(function(s,l){return s+l.p*l.q},0)}
+function boxes(){return cart.reduce(function(s,l){return s+(l.box?l.q:0)},0)}
+function total(){return cart.reduce(function(s,l){return s+l.p*l.q},0)+boxes()*BOX}
 function renderCart(){
   var h='';
   cart.forEach(function(l,k){var d=describe(l,lang);h+='<li><div class="ord-q"><button type="button" data-m="'+k+'" aria-label="-">−</button><b>'+l.q+'</b><button type="button" data-p="'+k+'" aria-label="+">+</button></div><span>'+esc(d.name)+(d.extra?'<small>'+esc(d.extra)+'</small>':'')+'</span><span>'+money(l.p*l.q)+'</span></li>'});
+  var nb=boxes(); if(nb)h+='<li class="ord-boxl"><span></span><span>'+(lang==='es'?'Cajas para llevar':'To-go boxes')+' × '+nb+'<small>'+(lang==='es'?'C$25 por cada comida':'C$25 per food item')+'</small></span><span>'+money(nb*BOX)+'</span></li>';
   $('ord-lines').innerHTML=h;
   $('ord-empty').style.display=cart.length?'none':'';
   $('ord-total').textContent=money(total());
@@ -569,6 +572,7 @@ function message(){
   if($('ord-hike').checked)m+='Empacado para caminata / Packed for a hike\n';
   m+='\n';
   cart.forEach(function(l){var es=describe(l,'es'),en=describe(l,'en');m+='• '+l.q+' × '+es.name+(en.name!==es.name?' ('+en.name+')':'')+(es.extra?' – '+es.extra:'')+' – '+money(l.p*l.q)+'\n'});
+  var nb=boxes(); if(nb)m+='• '+nb+' × Caja para llevar (to-go box) – '+money(nb*BOX)+'\n';
   m+='\nTotal: '+money(total())+' (pago al recoger / pay at pickup)\n';
   if(notes)m+='Notas / Notes: '+notes+'\n';
   return m;
