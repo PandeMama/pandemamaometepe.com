@@ -316,8 +316,8 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
   <span class="kicker label" data-es="Para llevar">Takeout</span>
   <h2 class="display"><span data-es="Pedí por&lt;br&gt;WhatsApp">Order ahead<br>on WhatsApp</span></h2>
   <div class="ord-intro">
-    <b><span data-es="Sin esperar">Skip the wait</span></b>
-    <p data-es="Armá tu pedido abajo, mandalo a nuestro WhatsApp y recogelo cuando te quede bien. Pagás al recoger. Abrimos todos los días de 7am a 8pm.">Build your order below, send it to our WhatsApp and pick it up when it suits you. Pay when you pick up. Open every day 7am–8pm.</p>
+    <b><span data-es="Día de volcán?">Volcano day?</span></b>
+    <p data-es="Pedí antes de las 8pm de la noche anterior y recogé desde las 7am, cuando abrimos. Te lo empacamos para el camino. Armá tu pedido abajo y se manda directo a nuestro WhatsApp. Pagás al recoger.">Order by 8pm the night before and pick up from 7am, when we open. We'll pack it for the trail. Build your order below and it goes straight to our WhatsApp. Pay when you pick up.</p>
   </div>
   <div class="ord-grid">
     <div id="ord-menu"></div>
@@ -334,9 +334,10 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
       </div>
       <label for="ord-notes" data-es="Notas (alergias, sin cebolla, etc.)">Notes (allergies, no onion, etc.)</label>
       <textarea id="ord-notes"></textarea>
+      <label class="ord-check"><input type="checkbox" id="ord-hike"> <span data-es="Empacado para caminata">Packed for a hike</span></label>
       <a class="btn ord-send" id="ord-send" href="https://wa.me/50586132300" target="_blank" rel="noopener"><span data-es="Enviar pedido por WhatsApp">Send order on WhatsApp</span></a>
       <p class="ord-msg" id="ord-msg" role="status"></p>
-      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Abrimos todos los días de 7am a 8pm.">We'll confirm on WhatsApp. Open every day 7am–8pm.</p>
+      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Para recoger temprano, pedí antes de las 8pm de la noche anterior. Abrimos todos los días de 7am a 8pm.">We'll confirm on WhatsApp. For early pickup, order by 8pm the night before. Open every day 7am–8pm.</p>
     </aside>
   </div>
 </div></section>
@@ -481,7 +482,7 @@ var MENU=[
 {en:'Ometepe Farm Salad',es:'Ensalada de la granja',den:'Island greens, egg, local cheese, our ham and slow-roasted chicken',des:'Hojas verdes de la isla, huevo, queso local, nuestro jamón y pollo asado',p:380},
 {en:'Garden Salad',es:'Ensalada de la huerta',t:'VG',den:'Island greens, tomato, cucumber, red onion, sourdough croutons',des:'Hojas verdes de la isla, tomate, pepino, cebolla morada, crutones de masa madre',p:290}
 ]},
-{en:'Snacks',es:'Para picar',items:[
+{en:'Trail snacks',es:'Para el camino',items:[
 {en:'Bagel chips & dip',es:'Chips de bagel con dip',den:'Our bagel chips',des:'Nuestros chips de bagel',v:[W('With hummus','Con hummus',170),W('With pesto','Con pesto',170),W('With flavored cream cheese','Con queso crema de sabor',200),W('Family size, all 3 dips','Tamaño familiar, los 3 dips',280)]}
 ]},
 {en:'Drinks',es:'Bebidas',items:[
@@ -565,6 +566,7 @@ function message(){
   var m='Hola Pan de Mama! Pedido para llevar / Takeout order\n\n';
   m+='Nombre / Name: '+name+'\n';
   m+='Recoger / Pickup: '+dayLabel(off,'es')+', '+timeLabel(t)+'\n';
+  if($('ord-hike').checked)m+='Empacado para caminata / Packed for a hike\n';
   m+='\n';
   cart.forEach(function(l){var es=describe(l,'es'),en=describe(l,'en');m+='• '+l.q+' × '+es.name+(en.name!==es.name?' ('+en.name+')':'')+(es.extra?' – '+es.extra:'')+' – '+money(l.p*l.q)+'\n'});
   m+='\nTotal: '+money(total())+' (pago al recoger / pay at pickup)\n';
@@ -591,7 +593,7 @@ function init(){
     renderCart();
   });
   $('ord-day').addEventListener('change',function(){renderTimes(true)});
-  ['ord-time','ord-name','ord-notes'].forEach(function(id){$(id).addEventListener('input',updateLink);$(id).addEventListener('change',updateLink)});
+  ['ord-time','ord-name','ord-notes','ord-hike'].forEach(function(id){$(id).addEventListener('input',updateLink);$(id).addEventListener('change',updateLink)});
   $('ord-send').addEventListener('click',function(e){
     var msg='';
     if(!cart.length)msg=lang==='es'?'Agregá al menos un producto.':'Add at least one item.';
