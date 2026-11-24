@@ -447,7 +447,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 </script>
 <script>
 (function(){
-var WA='50586132300';
+var WA='50586132300',FORM='https://docs.google.com/forms/d/e/1FAIpQLScXsBW63ZcXjMOQ6xFzWPhuRCpclc1oZc15Kcnv9kV3dTHiHA/formResponse';
 var BAGEL=[{en:'Sesame',es:'Ajonjolí'},{en:'Cheddar',es:'Cheddar'},{en:'Cinnamon',es:'Canela'}];
 var CC=[{en:'Plain',es:'Natural'},{en:'Pesto',es:'Pesto'},{en:'Jalapeño',es:'Jalapeño'},{en:'Green onion',es:'Cebollín'},{en:'Honey orange',es:'Miel y naranja'}];
 var CCP=[{en:'Plain cream cheese',es:'Queso crema natural',d:0},{en:'Pesto cream cheese',es:'Queso crema pesto',d:30},{en:'Jalapeño cream cheese',es:'Queso crema jalapeño',d:30},{en:'Green onion cream cheese',es:'Queso crema cebollín',d:30},{en:'Honey orange cream cheese',es:'Queso crema miel y naranja',d:30}];
@@ -605,6 +605,7 @@ function init(){
     $('ord-msg').textContent=msg;
     if(msg){e.preventDefault();if(!cart.length)$('ord-menu').scrollIntoView({behavior:'smooth'});else $('ord-name').focus();return}
     updateLink();
+    try{fetch(FORM,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({'entry.300816325':message(),'entry.866910454':String(total())})})}catch(err){}
   });
   var lb=$('lang');if(lb)lb.addEventListener('click',function(){lang=document.documentElement.lang==='es'?'es':'en';renderMenu();renderDays();renderCart()});
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){document.body.classList.toggle('cart-in-view',es[0].isIntersecting)}).observe($('ord-cart'))}
