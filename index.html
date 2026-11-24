@@ -44,7 +44,7 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2p
 .btn.light{background:var(--paper)}
 .nav .btn{padding:9px 14px;font-size:14px}
 /* hero */
-.hero{display:grid;grid-template-columns:1.05fr 1fr;min-height:calc(100vh - 64px);max-height:860px;border-bottom:2px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;min-height:calc(100vh - 64px);border-bottom:2px solid var(--ink)}
 .hero-text{background:var(--ink);color:var(--paper);padding:48px 56px;display:flex;flex-direction:column;justify-content:center;gap:26px}
 .hero h1{font-size:clamp(54px,min(7vw,11vh),112px)}
 .hero h1 em{font-style:normal;color:var(--mustard)}
@@ -52,14 +52,18 @@ header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:2p
 .hero .cta{display:flex;flex-wrap:wrap;gap:12px}
 .hero .cta .btn.light{background:transparent;color:var(--paper);border-color:var(--paper)}
 .hero-img{position:relative;overflow:hidden}
+.hero-img>img{position:absolute;inset:0}
+.hero-logo{position:relative;z-index:2;align-self:flex-start;width:min(240px,17vw,30vh);height:auto;aspect-ratio:1;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 0 0 5px var(--ink),0 0 0 8px var(--mustard),0 22px 50px rgba(0,0,0,.55);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.hero-logo{animation:none}}
 .stamp{position:absolute;right:22px;bottom:22px;width:132px;height:132px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);display:grid;place-items:center;text-align:center;font:700 15px/1.05 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.08em;transform:rotate(-8deg)}
 .stamp b{font-family:Anton,sans-serif;font-weight:400;font-size:30px;display:block;letter-spacing:0}
 /* info strip */
 .strip{background:var(--mustard);border-bottom:2px solid var(--ink)}
 .strip ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
-.strip li{padding:20px 18px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:6px}
+.strip li{padding:16px 18px;border-right:2px solid var(--ink);display:flex;flex-direction:column;gap:6px}
 .strip li:last-child{border-right:0}
-.strip strong{font:400 24px/1 Anton,sans-serif;text-transform:uppercase}
+.strip strong{font:400 clamp(16px,1.5vw,20px)/1.1 Anton,sans-serif;text-transform:uppercase}
 .strip .label{font-size:12px}
 /* sections */
 section{padding:96px 0;border-bottom:2px solid var(--ink)}
@@ -151,6 +155,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
   .hero{grid-template-columns:1fr;max-height:none;min-height:0}
   .hero-img{order:-1;height:56vh}
   .hero-text{padding:40px 22px 48px}
+  .hero-logo{width:132px;margin-top:-108px}
   .strip ul{grid-template-columns:1fr 1fr}
   .strip li:nth-child(2){border-right:0}
   .strip li:nth-child(-n+2){border-bottom:2px solid var(--ink)}
@@ -185,6 +190,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 <main id="top">
 <section class="hero" style="padding:0">
   <div class="hero-text">
+    <img class="hero-logo" src="https://lh3.googleusercontent.com/pw/AP1GczO8KoILU5xA0SIR1cKx7il2PnATprNgxUAZZFGmXnO3DtR2BiNpdr8Xua3JbuA78CkF1KAYdmzAY24x9UasGVKlsbCnAPQDa6IhEVkEXNR2tqk1y8j_txkJKoB3UlbVZI7RR9_IpuMqL3R8vemyv0dSn_6U39MNOdCmamOotfpAj2pUWKyyafRtj07FBm5lmt8xhsIkfDlYgAex6O-EMDt1kVe-V_JjdnEpnPgIbBurXbNcypCPAMNXb_zBR7mWKGeXlA5K5evLBc1d6zjiJII_NkxiLTnDCpverYtpHToi968qnoN6wjEfXb_PZepO1CqyERn_AfpFqQ8KK128pIrG4b2lbqMw2wbT8cwaKiF0v8HdnNZqdM070NcNB-kh_EJxUixtLWk3EjYkYhmAOhyqPLr_bh1izXr9e3WDF_-aYB7EiI6ZjGw9GWmuPIQwziWT-jLJXuVCQGNPO7YvJ4NzrvMP5WV1EXdA4xZz83kQlMpjVvBGSwp8Ro-2nW1DYnUBtfad741XAmS5lU_P4sruj4_6regXy3lmNuuRTwhIb8QaA1qPZUwWg950zYDsK8eKUrRkdIxiqoJn9NNhhMxs3oiT9lRUZTxrgriWCB02sB2ltQ9qLuwuD4Q_hDZjBxwNmCj8bUy8-orla88Ln6e7ZY6KtmsuWZ-w1yVKXkAogcqk6AhE50i1E-8_z7_WT0Oe-yYNu0DrD-bqxeO4Hw0XVuFpKGr6q66EnFSAKV08Rn9pLy08Qvq0xLmxib86o7wvvIBxJs7eeGxAA6DjTm4IdQiuDZ5X1Cd_2gwfER5l_k-cqoqUBjB1r9UQP3Co9NjOQd-EOqJvhsXxmO-Sim8ARGtOzBA1Jit6MGx272IsbXUb5OebWsF-_hrDQ4wHZzbt8df5y4HZorY7gBZYECSRKFydipWXOCL9jvElN1kscx88yftGgYG_SDWiEku-rJVVlNiKjE1lO-xrK72WrismuZS_olrAs_nXSMEM2U5pBadcAArgb7u2pk89YEpLsZFYhoMIUSfmV54Glr51jiU1n4YITQfxgz3xbQ3syGZzYnENwjp9teWcws8Ckz_a6Q=w600" alt="Pan de Mama logo" width="240" height="240">
     <span class="label" style="color:var(--mustard)" data-es="Santa Cruz · Altagracia · Isla de Ometepe">Santa Cruz · Altagracia · Isla de Ometepe</span>
     <h1 class="display"><span data-es="Café tostado &lt;em&gt;en Ometepe.&lt;/em&gt;">Coffee roasted <em>on Ometepe.</em></span></h1>
     <p class="lead" data-es="Café de especialidad que tostamos nosotros, bagels y pan de masa madre hechos en casa, y desayunos y almuerzos con ingredientes de la isla. Todos los días, 7am–8pm.">Specialty coffee we roast ourselves, bagels and sourdough made from scratch, and breakfast and lunch made with island ingredients. Every day, 7am–8pm.</p>
