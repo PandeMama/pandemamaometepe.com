@@ -150,7 +150,51 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 .foot nav{display:flex;gap:18px}
 .foot small{display:block;margin-top:30px;color:#8f8a7f}
 .wa-float{position:fixed;right:18px;bottom:18px;z-index:30;background:#25d366;color:#fff;border:2px solid var(--ink);border-radius:999px;padding:12px 18px;font:700 15px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;box-shadow:3px 3px 0 var(--ink)}
+/* order ahead */
+.order{background:#fff}
+.ord-hike{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--mustard);border:2px solid var(--ink);padding:18px 22px;margin:6px 0 40px;box-shadow:5px 5px 0 var(--ink)}
+.ord-hike b{font:400 34px/1 Anton,sans-serif;text-transform:uppercase}
+.ord-hike p{font-size:17px;max-width:40em}
+.ord-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:start}
+.ord-group h3{font:400 34px/1 Anton,sans-serif;text-transform:uppercase;border-bottom:2px solid var(--ink);padding:26px 0 10px}
+.ord-group:first-child h3{padding-top:0}
+.ord-item{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:14px 0;border-bottom:2px dotted var(--ink)}
+.ord-item h4{font:700 21px/1.15 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.03em}
+.ord-item h4 small{font:600 13px "Barlow Condensed",sans-serif;color:var(--brick);letter-spacing:.08em;margin-left:6px}
+.ord-item .pr{font:700 19px "Barlow Condensed",sans-serif;white-space:nowrap;text-align:right}
+.ord-item p{color:var(--muted);font-size:15px;line-height:1.45;grid-column:1/2}
+.ord-opts{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ord-opts select{font:600 15px "Barlow Condensed",sans-serif;border:2px solid var(--ink);background:var(--paper);padding:6px 8px;max-width:100%}
+.ord-add{margin-left:auto;border:2px solid var(--ink);background:var(--mustard);font:700 15px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;padding:8px 16px;cursor:pointer}
+.ord-add:active{transform:translate(1px,1px)}
+.ord-add.ok{background:var(--ink);color:var(--paper)}
+.ord-cart{position:sticky;top:84px;border:2px solid var(--ink);background:var(--paper);padding:22px;box-shadow:6px 6px 0 var(--ink)}
+.ord-cart h3{font:400 34px/1 Anton,sans-serif;text-transform:uppercase;margin-bottom:12px}
+.ord-lines{list-style:none;border-top:2px dotted var(--ink);margin-bottom:14px}
+.ord-lines li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:2px dotted var(--ink);font-size:15px;line-height:1.3}
+.ord-lines li span small{display:block;color:var(--muted);font-size:13px}
+.ord-q{display:flex;align-items:center;gap:4px}
+.ord-q button{width:28px;height:28px;border:2px solid var(--ink);background:#fff;font:700 16px/1 Barlow,sans-serif;cursor:pointer}
+.ord-q b{min-width:18px;text-align:center}
+.ord-empty{color:var(--muted);padding:12px 0 16px;border-top:2px dotted var(--ink);margin-bottom:14px}
+.ord-total{display:flex;justify-content:space-between;font:400 26px/1 Anton,sans-serif;text-transform:uppercase;margin:4px 0 16px}
+.ord-cart label{display:block;font:700 13px/1 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.12em;margin:12px 0 6px}
+.ord-cart input[type=text],.ord-cart select,.ord-cart textarea{width:100%;font:500 16px Barlow,sans-serif;border:2px solid var(--ink);background:#fff;padding:9px 10px}
+.ord-cart textarea{min-height:64px;resize:vertical}
+.ord-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ord-check{display:flex!important;gap:8px;align-items:center;text-transform:none!important;letter-spacing:0!important;font:500 16px Barlow,sans-serif!important;margin-top:14px!important}
+.ord-check input{width:20px;height:20px;accent-color:var(--ink)}
+.ord-send{width:100%;justify-content:center;margin-top:16px;background:#25d366;color:#fff;border-color:var(--ink)}
+.ord-msg{min-height:1.2em;margin-top:10px;font-size:14px;color:var(--brick)}
+.ord-fine{margin-top:10px;font-size:14px;color:var(--muted)}
+.ord-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:31;display:none;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--mustard);padding:12px 16px;font:700 16px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.08em;text-decoration:none}
+.ord-bar b{color:var(--mustard)}
 @media (max-width:900px){
+  .ord-grid{grid-template-columns:1fr;gap:36px}
+  .ord-cart{position:static}
+  .ord-hike{grid-template-columns:1fr;gap:6px}
+  body.has-order:not(.cart-in-view) .ord-bar{display:flex}
+  body.has-order .wa-float{display:none}
   .links{display:none}
   .hero{grid-template-columns:1fr;max-height:none;min-height:0}
   .hero-img{order:-1;height:56vh}
@@ -181,7 +225,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 <header><div class="wrap nav">
   <a class="brand" href="#top"><img src="https://lh3.googleusercontent.com/pw/AP1GczO8KoILU5xA0SIR1cKx7il2PnATprNgxUAZZFGmXnO3DtR2BiNpdr8Xua3JbuA78CkF1KAYdmzAY24x9UasGVKlsbCnAPQDa6IhEVkEXNR2tqk1y8j_txkJKoB3UlbVZI7RR9_IpuMqL3R8vemyv0dSn_6U39MNOdCmamOotfpAj2pUWKyyafRtj07FBm5lmt8xhsIkfDlYgAex6O-EMDt1kVe-V_JjdnEpnPgIbBurXbNcypCPAMNXb_zBR7mWKGeXlA5K5evLBc1d6zjiJII_NkxiLTnDCpverYtpHToi968qnoN6wjEfXb_PZepO1CqyERn_AfpFqQ8KK128pIrG4b2lbqMw2wbT8cwaKiF0v8HdnNZqdM070NcNB-kh_EJxUixtLWk3EjYkYhmAOhyqPLr_bh1izXr9e3WDF_-aYB7EiI6ZjGw9GWmuPIQwziWT-jLJXuVCQGNPO7YvJ4NzrvMP5WV1EXdA4xZz83kQlMpjVvBGSwp8Ro-2nW1DYnUBtfad741XAmS5lU_P4sruj4_6regXy3lmNuuRTwhIb8QaA1qPZUwWg950zYDsK8eKUrRkdIxiqoJn9NNhhMxs3oiT9lRUZTxrgriWCB02sB2ltQ9qLuwuD4Q_hDZjBxwNmCj8bUy8-orla88Ln6e7ZY6KtmsuWZ-w1yVKXkAogcqk6AhE50i1E-8_z7_WT0Oe-yYNu0DrD-bqxeO4Hw0XVuFpKGr6q66EnFSAKV08Rn9pLy08Qvq0xLmxib86o7wvvIBxJs7eeGxAA6DjTm4IdQiuDZ5X1Cd_2gwfER5l_k-cqoqUBjB1r9UQP3Co9NjOQd-EOqJvhsXxmO-Sim8ARGtOzBA1Jit6MGx272IsbXUb5OebWsF-_hrDQ4wHZzbt8df5y4HZorY7gBZYECSRKFydipWXOCL9jvElN1kscx88yftGgYG_SDWiEku-rJVVlNiKjE1lO-xrK72WrismuZS_olrAs_nXSMEM2U5pBadcAArgb7u2pk89YEpLsZFYhoMIUSfmV54Glr51jiU1n4YITQfxgz3xbQ3syGZzYnENwjp9teWcws8Ckz_a6Q=w160" alt="Pan de Mama logo"><span>Pan de Mama</span></a>
   <nav class="links">
-    <a href="#coffee"><span data-es="Café">Coffee</span></a><a href="#menu"><span data-es="Menú">Menu</span></a><a href="#happy-hour"><span data-es="Happy Hour">Happy Hour</span></a><a href="#visit"><span data-es="Visitanos">Visit</span></a>
+    <a href="#coffee"><span data-es="Café">Coffee</span></a><a href="#menu"><span data-es="Menú">Menu</span></a><a href="#order"><span data-es="Pedí">Order</span></a><a href="#happy-hour"><span data-es="Happy Hour">Happy Hour</span></a><a href="#visit"><span data-es="Visitanos">Visit</span></a>
   </nav>
   <button class="lang" id="lang" aria-label="Cambiar a español">ES</button>
   <a class="btn dark" href="https://maps.google.com/?cid=16764138190852655064" target="_blank" rel="noopener"><span data-es="Cómo llegar">Directions</span></a>
@@ -196,7 +240,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
     <p class="lead" data-es="Café de especialidad que tostamos nosotros, bagels y pan de masa madre hechos en casa, y desayunos y almuerzos con ingredientes de la isla. Todos los días, 7am–8pm.">Specialty coffee we roast ourselves, bagels and sourdough made from scratch, and breakfast and lunch made with island ingredients. Every day, 7am–8pm.</p>
     <div class="cta">
       <a class="btn yellow" href="https://maps.google.com/?cid=16764138190852655064" target="_blank" rel="noopener"><span data-es="Cómo llegar">Get directions</span></a>
-      <a class="btn light" href="#menu"><span data-es="Ver el menú">See the menu</span></a>
+      <a class="btn light" href="#order"><span data-es="Pedí para llevar">Order for pickup</span></a>
     </div>
   </div>
   <div class="hero-img">
@@ -266,6 +310,37 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
     <a class="btn dark" href="https://maps.google.com/?cid=16764138190852655064" target="_blank" rel="noopener"><span data-es="Menú completo en Google">Full menu on Google</span></a>
   </div>
 </div></section>
+
+<section id="order" class="order"><div class="wrap">
+  <span class="kicker label" data-es="Para llevar">Takeout</span>
+  <h2 class="display"><span data-es="Pedí por&lt;br&gt;WhatsApp">Order ahead<br>on WhatsApp</span></h2>
+  <div class="ord-hike">
+    <b><span data-es="Día de volcán?">Volcano day?</span></b>
+    <p data-es="Pedí antes de las 8pm de la noche anterior y recogé tu almuerzo empacado desde las 7am, cuando abrimos. Armá tu pedido abajo y se manda directo a nuestro WhatsApp. Pagás al recoger.">Order by 8pm the night before and pick up your packed lunch from 7am, when we open. Build your order below and it goes straight to our WhatsApp. Pay when you pick up.</p>
+  </div>
+  <div class="ord-grid">
+    <div id="ord-menu"></div>
+    <aside class="ord-cart" id="ord-cart">
+      <h3><span data-es="Tu pedido">Your order</span></h3>
+      <ul class="ord-lines" id="ord-lines"></ul>
+      <p class="ord-empty" id="ord-empty" data-es="Todavía no hay nada. Tocá Agregar en el menú.">Nothing here yet. Tap Add on the menu.</p>
+      <div class="ord-total"><span data-es="Total">Total</span><span id="ord-total">C$0</span></div>
+      <label for="ord-name" data-es="Tu nombre">Your name</label>
+      <input type="text" id="ord-name" autocomplete="name">
+      <div class="ord-two">
+        <div><label for="ord-day" data-es="Día">Day</label><select id="ord-day"></select></div>
+        <div><label for="ord-time" data-es="Hora">Time</label><select id="ord-time"></select></div>
+      </div>
+      <label class="ord-check"><input type="checkbox" id="ord-hike"> <span data-es="Empacado para caminata">Packed for a hike</span></label>
+      <label for="ord-notes" data-es="Notas (alergias, sin cebolla, etc.)">Notes (allergies, no onion, etc.)</label>
+      <textarea id="ord-notes"></textarea>
+      <a class="btn ord-send" id="ord-send" href="https://wa.me/50586132300" target="_blank" rel="noopener"><span data-es="Enviar pedido por WhatsApp">Send order on WhatsApp</span></a>
+      <p class="ord-msg" id="ord-msg" role="status"></p>
+      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Pedidos para temprano: antes de las 8pm de la noche anterior. Abrimos todos los días 7am–8pm.">We'll confirm on WhatsApp. Early orders: by 8pm the night before. Open every day 7am–8pm.</p>
+    </aside>
+  </div>
+</div></section>
+<a class="ord-bar" id="ord-bar" href="#ord-cart"><span id="ord-bar-n"></span><b id="ord-bar-t"></b></a>
 
 <section id="happy-hour" class="hh"><div class="wrap hh-grid">
   <div>
@@ -366,6 +441,170 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
   btn.addEventListener('click',function(){apply(cur==='en'?'es':'en')});
   var saved=null; try{saved=localStorage.getItem('pdm-lang')}catch(e){}
   if(saved==='es' || (!saved && (navigator.language||'').slice(0,2)==='es')) apply('es');
+})();
+</script>
+<script>
+(function(){
+var WA='50586132300';
+var BAGEL=[{en:'Sesame',es:'Ajonjolí'},{en:'Cheddar',es:'Cheddar'},{en:'Cinnamon',es:'Canela'}];
+var CC=[{en:'Plain',es:'Natural'},{en:'Pesto',es:'Pesto'},{en:'Jalapeño',es:'Jalapeño'},{en:'Green onion',es:'Cebollín'},{en:'Honey orange',es:'Miel y naranja'}];
+var CCP=[{en:'Plain cream cheese',es:'Queso crema natural',d:0},{en:'Pesto cream cheese',es:'Queso crema pesto',d:30},{en:'Jalapeño cream cheese',es:'Queso crema jalapeño',d:30},{en:'Green onion cream cheese',es:'Queso crema cebollín',d:30},{en:'Honey orange cream cheese',es:'Queso crema miel y naranja',d:30}];
+var OPT={bagel:{en:'Bagel',es:'Bagel',v:BAGEL},cc:{en:'Cream cheese',es:'Queso crema',v:CC},ccp:{en:'Cream cheese',es:'Queso crema',v:CCP}};
+function W(en,es,p){return{en:en,es:es,p:p}}
+var MENU=[
+{en:'Breakfast to go',es:'Desayuno para llevar',items:[
+{en:'Volcano Bagel',es:'Bagel Volcán',den:'House-smoked ham, scrambled eggs, our mozzarella and flavored cream cheese',des:'Jamón ahumado de la casa, huevos revueltos, nuestra mozzarella y queso crema de sabor',p:390,o:['bagel','cc']},
+{en:'Breakfast Bagel',es:'Bagel desayuno',t:'V',den:'Scrambled eggs and melted mozzarella',des:'Huevos revueltos y mozzarella derretida',p:260,o:['bagel']},
+{en:'Pesto Bagel',es:'Bagel de pesto',t:'V',den:'Scrambled eggs, tomato and pesto cream cheese on sesame',des:'Huevos revueltos, tomate y queso crema pesto en bagel de ajonjolí',p:270},
+{en:'Jalapeño Bagel',es:'Bagel de jalapeño',t:'V',den:'Scrambled eggs and jalapeño cream cheese on cheddar',des:'Huevos revueltos y queso crema jalapeño en bagel de cheddar',p:270},
+{en:'Caramel Bagel',es:'Bagel de caramelo',t:'V',den:'Honey orange cream cheese, our caramel and granola on cinnamon',des:'Queso crema miel y naranja, nuestro caramelo y granola en bagel de canela',p:270},
+{en:'Bagel & cream cheese',es:'Bagel con queso crema',t:'V',den:'Plain C$170, flavored C$200',des:'Natural C$170, de sabor C$200',p:170,o:['bagel','ccp']},
+{en:'Fruit, yogurt & granola',es:'Fruta, yogurt y granola',t:'V, GF',den:'Tropical fruit, our yogurt and ginger granola',des:'Fruta tropical, nuestro yogurt y granola de jengibre',p:200}
+]},
+{en:'Sandwiches',es:'Sándwiches',sub_en:'Pack them for the trail',sub_es:'Empacalos para el camino',items:[
+{en:'La Isla Panini',es:'Panini La Isla',den:'House-cured Ometepe ham, mozzarella, Dijon, greens and pineapple on sourdough',des:'Jamón de Ometepe curado en casa, mozzarella, dijon, hojas verdes y piña en masa madre',v:[W('Whole','Entero',410),W('Half','Medio',330)]},
+{en:'Ham & Cheese Panini',es:'Panini de jamón y queso',den:'Our smoked ham and mozzarella on sourdough',des:'Nuestro jamón ahumado y mozzarella en masa madre',v:[W('Whole','Entero',360),W('Half','Medio',290)]},
+{en:'Chicken Pesto Panini',es:'Panini de pollo al pesto',den:'Ometepe chicken, pesto, mozzarella and tomato on sourdough',des:'Pollo de Ometepe, pesto, mozzarella y tomate en masa madre',v:[W('Whole','Entero',380),W('Half','Medio',300)]},
+{en:'Caprese Panini',es:'Panini caprese',t:'V',den:'Mozzarella, island basil pesto and tomato on sourdough',des:'Mozzarella, pesto de albahaca de la isla y tomate en masa madre',v:[W('Whole','Entero',330),W('Half','Medio',260)]},
+{en:'Mediterranean Panini',es:'Panini mediterráneo',t:'VG',den:'Roasted eggplant, seasonal vegetables and our hummus on sourdough',des:'Berenjena asada, verduras de temporada y nuestro hummus en masa madre',v:[W('Whole','Entero',350),W('Half','Medio',280)]},
+{en:'Hummus Sandwich',es:'Sándwich de hummus',t:'VG',den:'Our hummus, greens, sprouts, tomato and cucumber on sourdough',des:'Nuestro hummus, hojas verdes, brotes, tomate y pepino en masa madre',v:[W('Whole','Entero',330),W('Half','Medio',260)]},
+{en:'Grilled Cheese & Tomato',es:'Queso y tomate a la plancha',t:'V',den:'Mozzarella and tomato on buttermilk & honey bread',des:'Mozzarella y tomate en pan de suero y miel',v:[W('Whole','Entero',280),W('Half','Medio',220)]},
+{en:'The House Bagel',es:'Bagel de la casa',den:'Smoked ham, cream cheese, tomato and greens on cheddar',des:'Jamón ahumado, queso crema, tomate y hojas verdes en bagel de cheddar',p:380},
+{en:'Ham & 3 Cheese Bagel',es:'Bagel jamón y 3 quesos',den:'Smoked ham, mozzarella and jalapeño cream cheese on cheddar',des:'Jamón ahumado, mozzarella y queso crema jalapeño en bagel de cheddar',p:400},
+{en:'Garden Bagel',es:'Bagel del jardín',t:'V',den:'Greens, sprouts, tomato, cucumber, onion and pesto cream cheese on sesame',des:'Hojas verdes, brotes, tomate, pepino, cebolla y queso crema pesto en ajonjolí',p:300},
+{en:'Vegan Bagel',es:'Bagel vegano',t:'VG',den:'Fresh vegetables and our hummus on sesame',des:'Verduras frescas y nuestro hummus en bagel de ajonjolí',p:320},
+{en:'Chicken Salad Sandwich',es:'Sándwich de ensalada de pollo',den:'Clay-oven roasted chicken, herb yogurt dressing, brioche bun',des:'Pollo asado en horno de barro, aderezo de hierbas y yogurt, pan brioche',p:340},
+{en:'PB&J',es:'Mantequilla de maní y jalea',t:'V',den:'Our peanut butter and tropical jam',des:'Nuestra mantequilla de maní y jalea tropical',v:[W('Buttermilk & honey bread','Pan de suero y miel',180),W('Half, buttermilk & honey','Medio, pan de suero y miel',150),W('Sourdough (vegan)','Masa madre (vegano)',200),W('Half, sourdough (vegan)','Medio, masa madre (vegano)',160)]},
+{en:'Quesadilla',es:'Quesadilla',den:'Our mozzarella on a homemade flour tortilla, achiote sour cream, pico de gallo',des:'Nuestra mozzarella en tortilla de harina casera, crema de achiote, pico de gallo',v:[W('Cheese','Queso',220),W('Cheese & roasted veggies','Queso y vegetales asados',280),W('Cheese, veggies & chicken','Queso, vegetales y pollo',360),W('Cheese & our ham','Queso y nuestro jamón',360),W('Cheese, ham & veggies','Queso, jamón y vegetales',420)]}
+]},
+{en:'Salads',es:'Ensaladas',items:[
+{en:'Ometepe Farm Salad',es:'Ensalada de la granja',den:'Island greens, egg, local cheese, our ham and slow-roasted chicken',des:'Hojas verdes de la isla, huevo, queso local, nuestro jamón y pollo asado',p:380},
+{en:'Garden Salad',es:'Ensalada de la huerta',t:'VG',den:'Island greens, tomato, cucumber, red onion, sourdough croutons',des:'Hojas verdes de la isla, tomate, pepino, cebolla morada, crutones de masa madre',p:290}
+]},
+{en:'Trail snacks',es:'Para el camino',items:[
+{en:'Bagel chips & dip',es:'Chips de bagel con dip',den:'Our bagel chips',des:'Nuestros chips de bagel',v:[W('With hummus','Con hummus',170),W('With pesto','Con pesto',170),W('With flavored cream cheese','Con queso crema de sabor',200),W('Family size, all 3 dips','Tamaño familiar, los 3 dips',280)]}
+]},
+{en:'Drinks',es:'Bebidas',items:[
+{en:'Cold brew',es:'Cold brew',den:'Our house-roasted coffee, steeped cold',des:'Nuestro café tostado en casa, preparado en frío',p:110},
+{en:'Coffee',es:'Café',den:'Roasted in house',des:'Tostado en casa',v:[W('Espresso','Espresso',80),W('Americano','Americano',100),W('Cappuccino','Capuchino',120),W('Latte','Latte',130),W('Mocha latte','Latte de moca',140),W('Caramel latte','Latte de caramelo',150),W('Caramel mocha latte','Latte moca y caramelo',160)]},
+{en:'Iced coffee',es:'Café helado',v:[W('Iced latte','Latte helado',140),W('Iced caramel latte','Latte de caramelo helado',150),W('Iced mocha latte','Latte de moca helado',160)]},
+{en:'Frozen coffee',es:'Café congelado',v:[W('Frozen latte','Latte congelado',150),W('Frozen caramel latte','Latte de caramelo congelado',160),W('Frozen mocha latte','Latte de moca congelado',170),W('Frozen caramel mocha','Moca caramelo congelado',180)]},
+{en:'Smoothie',es:'Batido',v:[W('Sandía Mía (watermelon, lime, chia)','Sandía Mía (sandía, limón, chía)',160),W('Tropical Dream (passionfruit, banana)','Sueño Tropical (calala, banano)',160),W('Mango Lassi','Mango Lassi',160),W('Bananarama (banana, mango)','Bananarama (banano, mango)',160),W('Caramel Banana','Banano con caramelo',170),W('Choco Banana','Choco Banano',175),W('Tropical Rainbow (jamaica, pineapple, banana)','Arcoíris Tropical (jamaica, piña, banano)',175),W('Green smoothie','Batido verde',180)]},
+{en:'Kombucha',es:'Kombucha',den:'House-brewed',des:'Hecha en casa',p:130},
+{en:'Juice',es:'Jugo',p:100},
+{en:'Iced cacao',es:'Cacao helado',den:'Our own cacao',des:'Nuestro propio cacao',p:120}
+]}
+];
+var cart=[], lang='en';
+function L(o,k){k=k||'';return lang==='es'?(o[k+'es']||o[k+'en']):o[k+'en']}
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function money(n){return 'C$'+n.toLocaleString('en-US')}
+function renderMenu(){
+  var h='';
+  MENU.forEach(function(g,gi){
+    h+='<div class="ord-group"><h3>'+esc(L(g))+'</h3>';
+    g.items.forEach(function(it,ii){
+      var price=it.v?it.v[0].p:it.p, opts='';
+      if(it.v){opts+='<select data-k="v" aria-label="'+esc(L(it))+'">'+it.v.map(function(x,i){return '<option value="'+i+'">'+esc(L(x))+' · '+money(x.p)+'</option>'}).join('')+'</select>'}
+      (it.o||[]).forEach(function(k){var og=OPT[k];opts+='<select data-k="'+k+'" aria-label="'+esc(L(og))+'">'+og.v.map(function(x,i){return '<option value="'+i+'">'+esc(L(og))+': '+esc(L(x))+'</option>'}).join('')+'</select>'});
+      h+='<div class="ord-item" data-g="'+gi+'" data-i="'+ii+'"><h4>'+esc(L(it))+(it.t?'<small>'+it.t+'</small>':'')+'</h4><span class="pr">'+(it.v?(lang==='es'?'desde ':'from ')+money(price):money(price))+'</span>'+(it.den?'<p>'+esc(L(it,'d'))+'</p>':'')+'<div class="ord-opts">'+opts+'<button type="button" class="ord-add">'+(lang==='es'?'Agregar':'Add')+'</button></div></div>';
+    });
+    h+='</div>';
+  });
+  $('ord-menu').innerHTML=h;
+}
+function lineFor(row){
+  var it=MENU[+row.dataset.g].items[+row.dataset.i], sel={}, p=it.p, vi=null;
+  row.querySelectorAll('select').forEach(function(s){sel[s.dataset.k]=+s.value});
+  if(it.v){vi=sel.v;p=it.v[vi].p}
+  if('ccp' in sel)p+=CCP[sel.ccp].d;
+  return {g:+row.dataset.g,i:+row.dataset.i,vi:vi,bagel:('bagel' in sel)?sel.bagel:null,cc:('cc' in sel)?sel.cc:null,ccp:('ccp' in sel)?sel.ccp:null,p:p,q:1};
+}
+function sameLine(a,b){return a.g===b.g&&a.i===b.i&&a.vi===b.vi&&a.bagel===b.bagel&&a.cc===b.cc&&a.ccp===b.ccp}
+function describe(l,lg){
+  var it=MENU[l.g].items[l.i], save=lang; lang=lg;
+  var name=L(it), bits=[];
+  if(l.vi!==null)bits.push(L(it.v[l.vi]));
+  if(l.bagel!==null)bits.push((lg==='es'?'bagel ':'bagel ')+L(BAGEL[l.bagel]).toLowerCase());
+  if(l.cc!==null)bits.push((lg==='es'?'queso crema ':'cream cheese ')+L(CC[l.cc]).toLowerCase());
+  if(l.ccp!==null)bits.push(L(CCP[l.ccp]).toLowerCase());
+  lang=save; return {name:name,extra:bits.join(', ')};
+}
+function total(){return cart.reduce(function(s,l){return s+l.p*l.q},0)}
+function renderCart(){
+  var h='';
+  cart.forEach(function(l,k){var d=describe(l,lang);h+='<li><div class="ord-q"><button type="button" data-m="'+k+'" aria-label="-">−</button><b>'+l.q+'</b><button type="button" data-p="'+k+'" aria-label="+">+</button></div><span>'+esc(d.name)+(d.extra?'<small>'+esc(d.extra)+'</small>':'')+'</span><span>'+money(l.p*l.q)+'</span></li>'});
+  $('ord-lines').innerHTML=h;
+  $('ord-empty').style.display=cart.length?'none':'';
+  $('ord-total').textContent=money(total());
+  var n=cart.reduce(function(s,l){return s+l.q},0);
+  document.body.classList.toggle('has-order',n>0);
+  $('ord-bar-n').textContent=(lang==='es'?'Ver pedido (':'View order (')+n+')';
+  $('ord-bar-t').textContent=money(total());
+  updateLink();
+}
+function mgaNow(){return new Date(Date.now()-6*3600e3)}
+var DES=['dom','lun','mar','mié','jue','vie','sáb'],DEN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],MEN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dayLabel(off,lg){var d=mgaNow();d.setUTCDate(d.getUTCDate()+off);var base=lg==='es'?DES[d.getUTCDay()]+' '+d.getUTCDate()+' '+MES[d.getUTCMonth()]:DEN[d.getUTCDay()]+' '+MEN[d.getUTCMonth()]+' '+d.getUTCDate();if(off===0)return(lg==='es'?'Hoy, ':'Today, ')+base;if(off===1)return(lg==='es'?'Mañana, ':'Tomorrow, ')+base;return base}
+function timeLabel(m){var h=Math.floor(m/60),mm=m%60,ap=h<12?'am':'pm',h12=h%12||12;return h12+':'+(mm<10?'0':'')+mm+' '+ap}
+var FIRST=7*60,LAST=19*60+30;
+function slots(off){var out=[],start=FIRST;if(off===0){var n=mgaNow(),now=n.getUTCHours()*60+n.getUTCMinutes()+30;start=Math.max(FIRST,Math.ceil(now/15)*15)}for(var m=start;m<=LAST;m+=15)out.push(m);return out}
+function renderDays(){
+  var ds=$('ord-day'),prev=ds.value,h='';
+  for(var off=0;off<7;off++){if(off===0&&!slots(0).length)continue;h+='<option value="'+off+'">'+esc(dayLabel(off,lang))+'</option>'}
+  ds.innerHTML=h; if(prev&&ds.querySelector('option[value="'+prev+'"]'))ds.value=prev; renderTimes();
+}
+function renderTimes(fresh){
+  var ts=$('ord-time'),prev=fresh===true?'':ts.value,list=slots(+$('ord-day').value);
+  ts.innerHTML=list.map(function(m){return '<option value="'+m+'">'+timeLabel(m)+'</option>'}).join('');
+  if(prev&&ts.querySelector('option[value="'+prev+'"]'))ts.value=prev; updateLink();
+}
+function message(){
+  var off=+$('ord-day').value,t=+$('ord-time').value,name=$('ord-name').value.trim(),notes=$('ord-notes').value.trim();
+  var m='Hola Pan de Mama! Pedido para llevar / Takeout order\n\n';
+  m+='Nombre / Name: '+name+'\n';
+  m+='Recoger / Pickup: '+dayLabel(off,'es')+', '+timeLabel(t)+'\n';
+  if($('ord-hike').checked)m+='Empacado para caminata / Packed for a hike\n';
+  m+='\n';
+  cart.forEach(function(l){var es=describe(l,'es'),en=describe(l,'en');m+='• '+l.q+' × '+es.name+(en.name!==es.name?' ('+en.name+')':'')+(es.extra?' – '+es.extra:'')+' – '+money(l.p*l.q)+'\n'});
+  m+='\nTotal: '+money(total())+' (pago al recoger / pay at pickup)\n';
+  if(notes)m+='Notas / Notes: '+notes+'\n';
+  return m;
+}
+function updateLink(){$('ord-send').href='https://wa.me/'+WA+'?text='+encodeURIComponent(cart.length?message():'Hola Pan de Mama!')}
+function init(){
+  if(!$('ord-menu'))return;
+  lang=document.documentElement.lang==='es'?'es':'en';
+  renderMenu();renderDays();renderCart();
+  $('ord-menu').addEventListener('click',function(e){
+    var b=e.target.closest('.ord-add');if(!b)return;
+    var l=lineFor(b.closest('.ord-item')),hit=null;
+    cart.forEach(function(x){if(sameLine(x,l))hit=x});
+    if(hit)hit.q++;else cart.push(l);
+    renderCart();b.classList.add('ok');b.textContent=lang==='es'?'Agregado ✓':'Added ✓';
+    setTimeout(function(){b.classList.remove('ok');b.textContent=lang==='es'?'Agregar':'Add'},1200);
+  });
+  $('ord-lines').addEventListener('click',function(e){
+    var p=e.target.getAttribute('data-p'),mi=e.target.getAttribute('data-m');
+    if(p!==null)cart[+p].q++;
+    if(mi!==null){cart[+mi].q--;if(cart[+mi].q<1)cart.splice(+mi,1)}
+    renderCart();
+  });
+  $('ord-day').addEventListener('change',function(){renderTimes(true)});
+  ['ord-time','ord-name','ord-notes','ord-hike'].forEach(function(id){$(id).addEventListener('input',updateLink);$(id).addEventListener('change',updateLink)});
+  $('ord-send').addEventListener('click',function(e){
+    var msg='';
+    if(!cart.length)msg=lang==='es'?'Agregá al menos un producto.':'Add at least one item.';
+    else if(!$('ord-name').value.trim())msg=lang==='es'?'Escribí tu nombre.':'Please add your name.';
+    $('ord-msg').textContent=msg;
+    if(msg){e.preventDefault();if(!cart.length)$('ord-menu').scrollIntoView({behavior:'smooth'});else $('ord-name').focus();return}
+    updateLink();
+  });
+  var lb=$('lang');if(lb)lb.addEventListener('click',function(){lang=document.documentElement.lang==='es'?'es':'en';renderMenu();renderDays();renderCart()});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){document.body.classList.toggle('cart-in-view',es[0].isIntersecting)}).observe($('ord-cart'))}
+}
+init();
 })();
 </script>
 </body>
