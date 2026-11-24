@@ -168,9 +168,10 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 .ord-add{margin-left:auto;border:2px solid var(--ink);background:var(--mustard);font:700 15px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;padding:8px 16px;cursor:pointer}
 .ord-add:active{transform:translate(1px,1px)}
 .ord-add.ok{background:var(--ink);color:var(--paper)}
-.ord-cart{position:sticky;top:84px;border:2px solid var(--ink);background:var(--paper);padding:22px;box-shadow:6px 6px 0 var(--ink)}
+.ord-cart{position:sticky;top:84px;max-height:calc(100vh - 100px);overflow:auto;border:2px solid var(--ink);background:var(--paper);padding:22px;box-shadow:6px 6px 0 var(--ink)}
 .ord-cart h3{font:400 34px/1 Anton,sans-serif;text-transform:uppercase;margin-bottom:12px}
 .ord-lines{list-style:none;border-top:2px dotted var(--ink);margin-bottom:14px}
+.ord-lines:empty{display:none}
 .ord-lines li{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:2px dotted var(--ink);font-size:15px;line-height:1.3}
 .ord-lines li span small{display:block;color:var(--muted);font-size:13px}
 .ord-q{display:flex;align-items:center;gap:4px}
@@ -191,7 +192,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 .ord-bar b{color:var(--mustard)}
 @media (max-width:900px){
   .ord-grid{grid-template-columns:1fr;gap:36px}
-  .ord-cart{position:static}
+  .ord-cart{position:static;max-height:none;overflow:visible}
   .ord-hike{grid-template-columns:1fr;gap:6px}
   body.has-order:not(.cart-in-view) .ord-bar{display:flex}
   body.has-order .wa-float{display:none}
