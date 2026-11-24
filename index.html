@@ -152,9 +152,9 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 .wa-float{position:fixed;right:18px;bottom:18px;z-index:30;background:#25d366;color:#fff;border:2px solid var(--ink);border-radius:999px;padding:12px 18px;font:700 15px "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;box-shadow:3px 3px 0 var(--ink)}
 /* order ahead */
 .order{background:#fff}
-.ord-hike{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--mustard);border:2px solid var(--ink);padding:18px 22px;margin:6px 0 40px;box-shadow:5px 5px 0 var(--ink)}
-.ord-hike b{font:400 34px/1 Anton,sans-serif;text-transform:uppercase}
-.ord-hike p{font-size:17px;max-width:40em}
+.ord-intro{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--mustard);border:2px solid var(--ink);padding:18px 22px;margin:6px 0 40px;box-shadow:5px 5px 0 var(--ink)}
+.ord-intro b{font:400 34px/1 Anton,sans-serif;text-transform:uppercase}
+.ord-intro p{font-size:17px;max-width:40em}
 .ord-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:48px;align-items:start}
 .ord-group h3{font:400 34px/1 Anton,sans-serif;text-transform:uppercase;border-bottom:2px solid var(--ink);padding:26px 0 10px}
 .ord-group:first-child h3{padding-top:0}
@@ -193,7 +193,7 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 @media (max-width:900px){
   .ord-grid{grid-template-columns:1fr;gap:36px}
   .ord-cart{position:static;max-height:none;overflow:visible}
-  .ord-hike{grid-template-columns:1fr;gap:6px}
+  .ord-intro{grid-template-columns:1fr;gap:6px}
   body.has-order:not(.cart-in-view) .ord-bar{display:flex}
   body.has-order .wa-float{display:none}
   .links{display:none}
@@ -315,9 +315,9 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
 <section id="order" class="order"><div class="wrap">
   <span class="kicker label" data-es="Para llevar">Takeout</span>
   <h2 class="display"><span data-es="Pedí por&lt;br&gt;WhatsApp">Order ahead<br>on WhatsApp</span></h2>
-  <div class="ord-hike">
-    <b><span data-es="Día de volcán?">Volcano day?</span></b>
-    <p data-es="Pedí antes de las 8pm de la noche anterior y recogé tu almuerzo empacado desde las 7am, cuando abrimos. Armá tu pedido abajo y se manda directo a nuestro WhatsApp. Pagás al recoger.">Order by 8pm the night before and pick up your packed lunch from 7am, when we open. Build your order below and it goes straight to our WhatsApp. Pay when you pick up.</p>
+  <div class="ord-intro">
+    <b><span data-es="Sin esperar">Skip the wait</span></b>
+    <p data-es="Armá tu pedido abajo, mandalo a nuestro WhatsApp y recogelo cuando te quede bien. Pagás al recoger. Abrimos todos los días de 7am a 8pm.">Build your order below, send it to our WhatsApp and pick it up when it suits you. Pay when you pick up. Open every day 7am–8pm.</p>
   </div>
   <div class="ord-grid">
     <div id="ord-menu"></div>
@@ -332,12 +332,11 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
         <div><label for="ord-day" data-es="Día">Day</label><select id="ord-day"></select></div>
         <div><label for="ord-time" data-es="Hora">Time</label><select id="ord-time"></select></div>
       </div>
-      <label class="ord-check"><input type="checkbox" id="ord-hike"> <span data-es="Empacado para caminata">Packed for a hike</span></label>
       <label for="ord-notes" data-es="Notas (alergias, sin cebolla, etc.)">Notes (allergies, no onion, etc.)</label>
       <textarea id="ord-notes"></textarea>
       <a class="btn ord-send" id="ord-send" href="https://wa.me/50586132300" target="_blank" rel="noopener"><span data-es="Enviar pedido por WhatsApp">Send order on WhatsApp</span></a>
       <p class="ord-msg" id="ord-msg" role="status"></p>
-      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Pedidos para temprano: antes de las 8pm de la noche anterior. Abrimos todos los días 7am–8pm.">We'll confirm on WhatsApp. Early orders: by 8pm the night before. Open every day 7am–8pm.</p>
+      <p class="ord-fine" data-es="Te confirmamos por WhatsApp. Abrimos todos los días de 7am a 8pm.">We'll confirm on WhatsApp. Open every day 7am–8pm.</p>
     </aside>
   </div>
 </div></section>
@@ -462,7 +461,7 @@ var MENU=[
 {en:'Bagel & cream cheese',es:'Bagel con queso crema',t:'V',den:'Plain C$170, flavored C$200',des:'Natural C$170, de sabor C$200',p:170,o:['bagel','ccp']},
 {en:'Fruit, yogurt & granola',es:'Fruta, yogurt y granola',t:'V, GF',den:'Tropical fruit, our yogurt and ginger granola',des:'Fruta tropical, nuestro yogurt y granola de jengibre',p:200}
 ]},
-{en:'Sandwiches',es:'Sándwiches',sub_en:'Pack them for the trail',sub_es:'Empacalos para el camino',items:[
+{en:'Sandwiches',es:'Sándwiches',items:[
 {en:'La Isla Panini',es:'Panini La Isla',den:'House-cured Ometepe ham, mozzarella, Dijon, greens and pineapple on sourdough',des:'Jamón de Ometepe curado en casa, mozzarella, dijon, hojas verdes y piña en masa madre',v:[W('Whole','Entero',410),W('Half','Medio',330)]},
 {en:'Ham & Cheese Panini',es:'Panini de jamón y queso',den:'Our smoked ham and mozzarella on sourdough',des:'Nuestro jamón ahumado y mozzarella en masa madre',v:[W('Whole','Entero',360),W('Half','Medio',290)]},
 {en:'Chicken Pesto Panini',es:'Panini de pollo al pesto',den:'Ometepe chicken, pesto, mozzarella and tomato on sourdough',des:'Pollo de Ometepe, pesto, mozzarella y tomate en masa madre',v:[W('Whole','Entero',380),W('Half','Medio',300)]},
@@ -482,7 +481,7 @@ var MENU=[
 {en:'Ometepe Farm Salad',es:'Ensalada de la granja',den:'Island greens, egg, local cheese, our ham and slow-roasted chicken',des:'Hojas verdes de la isla, huevo, queso local, nuestro jamón y pollo asado',p:380},
 {en:'Garden Salad',es:'Ensalada de la huerta',t:'VG',den:'Island greens, tomato, cucumber, red onion, sourdough croutons',des:'Hojas verdes de la isla, tomate, pepino, cebolla morada, crutones de masa madre',p:290}
 ]},
-{en:'Trail snacks',es:'Para el camino',items:[
+{en:'Snacks',es:'Para picar',items:[
 {en:'Bagel chips & dip',es:'Chips de bagel con dip',den:'Our bagel chips',des:'Nuestros chips de bagel',v:[W('With hummus','Con hummus',170),W('With pesto','Con pesto',170),W('With flavored cream cheese','Con queso crema de sabor',200),W('Family size, all 3 dips','Tamaño familiar, los 3 dips',280)]}
 ]},
 {en:'Drinks',es:'Bebidas',items:[
@@ -566,7 +565,6 @@ function message(){
   var m='Hola Pan de Mama! Pedido para llevar / Takeout order\n\n';
   m+='Nombre / Name: '+name+'\n';
   m+='Recoger / Pickup: '+dayLabel(off,'es')+', '+timeLabel(t)+'\n';
-  if($('ord-hike').checked)m+='Empacado para caminata / Packed for a hike\n';
   m+='\n';
   cart.forEach(function(l){var es=describe(l,'es'),en=describe(l,'en');m+='• '+l.q+' × '+es.name+(en.name!==es.name?' ('+en.name+')':'')+(es.extra?' – '+es.extra:'')+' – '+money(l.p*l.q)+'\n'});
   m+='\nTotal: '+money(total())+' (pago al recoger / pay at pickup)\n';
@@ -593,7 +591,7 @@ function init(){
     renderCart();
   });
   $('ord-day').addEventListener('change',function(){renderTimes(true)});
-  ['ord-time','ord-name','ord-notes','ord-hike'].forEach(function(id){$(id).addEventListener('input',updateLink);$(id).addEventListener('change',updateLink)});
+  ['ord-time','ord-name','ord-notes'].forEach(function(id){$(id).addEventListener('input',updateLink);$(id).addEventListener('change',updateLink)});
   $('ord-send').addEventListener('click',function(e){
     var msg='';
     if(!cart.length)msg=lang==='es'?'Agregá al menos un producto.':'Add at least one item.';
