@@ -5,7 +5,8 @@ Reads the sheet as CSV (columns: Section, Item, Option, Price C$) and updates, i
 index.html and es/index.html:
   - the MENU list in the order script (what the order form charges),
   - the order list written into the page for Google (#ord-menu),
-  - the menu highlights (#menu).
+  - the menu highlights (#menu),
+  - the extras / add-ons list (EX) for rows with Section "Extras".
 Only prices change. Items are matched by their English name and option, so rename
 or add items on the website itself, not in the sheet.
 Exits 0 with no changes when every price already matches.
@@ -76,6 +77,24 @@ def update_file(path, prices, report):
         i += 1
         out_lines.append(line)
     h = h[:start] + "\n".join(out_lines) + h[end:]
+
+    # Extras / add-ons (sheet rows: Section "Extras", Item = group name, Option = extra).
+    if "var EX={" in h:
+        names = dict(re.findall(r"(\w+):'([^']+)'", h[h.index("var EXN={"):h.index("};", h.index("var EXN={"))]))
+        a = h.index("var EX={"); b = h.index("\n};", a)
+        out = []
+        for line in h[a:b].split("\n"):
+            m = re.match(r"^(\w+):\[", line)
+            if m and m.group(1) in names:
+                grp = names[m.group(1)]
+                def xsub(mm, grp=grp):
+                    opt = js_unescape(mm.group(1)); old = int(mm.group(3))
+                    new = prices.get((grp, opt), old)
+                    if new != old: report.append(f"{path}: {grp} / {opt}: C${old} -> C${new}")
+                    return f"X('{mm.group(1)}','{mm.group(2)}',{new})"
+                line = re.sub(r"X\('((?:[^'\\]|\\.)*)','((?:[^'\\]|\\.)*)',(\d+)\)", xsub, line)
+            out.append(line)
+        h = h[:a] + "\n".join(out) + h[b:]
 
     # Order list written into the page.
     for g, i, en, es, vals, multi in items:
