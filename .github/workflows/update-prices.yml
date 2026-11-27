@@ -1,0 +1,44 @@
+name: Update prices from Google Sheet
+
+# Copies prices from the "Website prices - Pan de Mama" Google Sheet into
+# index.html and es/index.html. Runs every hour and can be started by hand
+# (Actions tab > Update prices from Google Sheet > Run workflow).
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: update-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy prices from the sheet
+        id: prices
+        env:
+          PRICES_SHEET_ID: 1YeiIZCiCQT7O2tP5_xgRsDQbasUUkhVh8DIOIV4fORo
+        run: python3 scripts/update_prices.py
+
+      - name: Publish the new prices
+        if: steps.prices.outputs.changed == 'true'
+        run: |
+          git config user.name "pan-de-mama-prices"
+          git config user.email "pandemamaometepe@gmail.com"
+          git add index.html es/index.html
+          git commit -m "Update prices from Google Sheet"
+          git push
+
+      - name: Make sure GitHub Pages rebuilds the site
+        if: steps.prices.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request not needed"
